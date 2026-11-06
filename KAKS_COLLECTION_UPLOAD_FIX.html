@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>KAKS COLLECTION — Built From The East</title>
+  <meta name="description" content="KAKS COLLECTION — Premium streetwear born from the East.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--black:#090909;--white:#f6f5f1;--orange:#ff6a00;--muted:#a7a7a2;--line:#292929}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--black);color:var(--white);font-family:"DM Sans",sans-serif}
+    a{color:inherit;text-decoration:none} button{font:inherit;cursor:pointer}
+    .announcement{background:var(--orange);color:#090909;text-align:center;padding:9px 12px;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+    header{height:76px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(9,9,9,.94);backdrop-filter:blur(12px);z-index:20}
+    .logo{font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:30px;letter-spacing:1px;line-height:.85}.logo span{color:var(--orange)}
+    nav{display:flex;gap:30px;align-items:center} nav a{font-size:10px;font-weight:700;letter-spacing:1.7px;color:#ddd;transition:.2s} nav a:hover{color:var(--orange)}
+    .header-actions{display:flex;align-items:center;gap:18px}.cart-trigger,.menu-trigger{border:0;background:none;color:white;font-size:11px;letter-spacing:1px;font-weight:800}.cart-count{display:inline-grid;place-items:center;background:var(--orange);color:#090909;border-radius:50%;width:19px;height:19px;margin-left:5px;font-size:10px}
+    .menu-trigger{display:none;font-size:22px}
+    .hero{min-height:620px;display:flex;align-items:center;position:relative;overflow:hidden;background:#171717}
+    .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;opacity:.55}
+    .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.56) 48%,rgba(0,0,0,.12) 100%)}
+    .hero-content{position:relative;z-index:1;padding:80px 9vw;max-width:850px}
+    .eyebrow{font-size:10px;letter-spacing:4px;color:var(--orange);font-weight:800;text-transform:uppercase}
+    h1,h2,h3,p{margin-top:0} h1{font-family:"Barlow Condensed",sans-serif;font-size:clamp(66px,10vw,142px);line-height:.82;letter-spacing:-2px;text-transform:uppercase;margin:22px 0}
+    h1 span{color:var(--orange)} .hero p{max-width:420px;color:#d0d0cc;font-size:13px;line-height:1.8}
+    .button{display:inline-flex;align-items:center;justify-content:center;background:var(--orange);color:#090909;padding:15px 24px;font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--orange);transition:.2s}
+    .button:hover{background:transparent;color:var(--orange)} .button-outline{background:transparent;color:white;border-color:#777}.button-outline:hover{border-color:var(--orange)}
+    .section{padding:92px 5vw}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:34px}
+    .section-kicker{color:var(--orange);font-size:10px;letter-spacing:3px;font-weight:800;text-transform:uppercase}
+    h2{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;font-size:clamp(42px,6vw,76px);line-height:.9;margin:10px 0 0}
+    .section-note{color:var(--muted);font-size:12px;max-width:280px;line-height:1.7}
+    .filters{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 25px}.filter{background:transparent;border:1px solid #444;color:#ddd;padding:9px 14px;font-size:9px;font-weight:800;letter-spacing:1.5px}.filter.active,.filter:hover{background:var(--orange);border-color:var(--orange);color:#090909}
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .product-card{min-width:0}.product-image-wrap{position:relative;aspect-ratio:3/4;background:#1d1d1d;overflow:hidden}
+    .product-image{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s}
+    .product-image-wrap video.product-image{object-fit:cover}
+    .custom-field input[type=file]{font-size:10px;padding:9px;background:#1d1d1d;border:1px dashed #666;color:#ddd}
+    .product-card:hover .product-image{transform:scale(1.055)}
+    .product-tag{position:absolute;top:12px;left:12px;background:var(--orange);color:#090909;font-size:8px;font-weight:900;letter-spacing:1px;padding:7px 9px}
+    .product-info{padding:14px 2px 5px}.product-name{font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:7px}.product-meta{display:flex;justify-content:space-between;align-items:center;color:#bdbdb8;font-size:11px}
+    .add-button{margin-top:13px;width:100%;padding:11px;background:transparent;border:1px solid #4a4a4a;color:white;font-size:9px;font-weight:900;letter-spacing:1.5px;transition:.2s}.add-button:hover{background:var(--orange);border-color:var(--orange);color:#090909}
+    .editorial{display:grid;grid-template-columns:1.1fr .9fr;min-height:470px;background:#151515}
+    .editorial-image{width:100%;height:100%;min-height:380px;object-fit:cover}
+    .editorial-copy{padding:clamp(35px,6vw,80px);display:flex;flex-direction:column;justify-content:center}
+    .editorial-copy h2{font-size:clamp(48px,6vw,82px)}.editorial-copy p{font-size:13px;color:#bdbdb8;line-height:1.9;margin:24px 0 30px;max-width:430px}
+    .story{background:var(--orange);color:#090909;text-align:center;padding:82px 8vw}.story .section-kicker{color:#090909}.story h2{max-width:900px;margin:14px auto 20px}.story p{max-width:650px;margin:0 auto;color:#24201d;font-size:13px;line-height:1.9}
+    .newsletter{padding:75px 5vw;text-align:center;border-bottom:1px solid var(--line)}.newsletter h2{font-size:54px}.newsletter p{color:var(--muted);font-size:12px;margin:15px auto 24px}
+    .newsletter-form{display:flex;max-width:440px;margin:auto}.newsletter-form input{flex:1;min-width:0;background:#171717;border:1px solid #444;padding:14px;color:white;outline:none}.newsletter-form button{border:0}
+    footer{padding:35px 5vw;display:flex;justify-content:space-between;gap:25px;align-items:center;color:#888;font-size:10px;letter-spacing:1px}footer .logo{color:white}
+    .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:40;opacity:0;pointer-events:none;transition:.25s}.cart-overlay.open{opacity:1;pointer-events:auto}
+    .cart-panel{position:fixed;z-index:41;right:0;top:0;height:100%;width:min(430px,100%);background:#101010;border-left:1px solid #333;padding:25px;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column}.cart-panel.open{transform:translateX(0)}
+    .cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333;padding-bottom:18px}.cart-head h3{font-family:"Barlow Condensed";font-size:32px;margin:0}.close-cart{background:none;border:0;color:white;font-size:25px}
+    .cart-items{overflow:auto;flex:1;padding:15px 0}.cart-item{display:grid;grid-template-columns:65px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid #292929}.cart-item img{width:65px;height:80px;object-fit:cover}.cart-item strong{font-size:11px}.cart-item small{display:block;color:#aaa;margin-top:6px}.qty{display:flex;gap:9px;align-items:center;margin-top:10px}.qty button,.remove{background:none;border:1px solid #555;color:white;padding:3px 8px}.remove{border:0;color:var(--orange);align-self:start}
+    .cart-bottom{border-top:1px solid #333;padding-top:18px}.total-row{display:flex;justify-content:space-between;font-size:13px;font-weight:800;margin-bottom:17px}.cart-bottom .button{width:100%;border:0}.empty{color:#999;text-align:center;padding:50px 0;font-size:13px}
+    .toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:var(--orange);color:#090909;padding:12px 18px;font-size:11px;font-weight:800;opacity:0;transition:.25s;z-index:60;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+    .custom-overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:70;opacity:0;pointer-events:none;transition:.25s}
+    .custom-overlay.open{opacity:1;pointer-events:auto}
+    .custom-panel{position:fixed;z-index:71;left:50%;top:50%;width:min(720px,94vw);max-height:88vh;overflow:auto;transform:translate(-50%,-46%) scale(.98);opacity:0;pointer-events:none;background:#111;border:1px solid #444;padding:24px;transition:.25s;box-shadow:0 25px 90px #000}
+    .custom-panel.open{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}
+    .custom-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333;padding-bottom:15px;margin-bottom:18px}
+    .custom-head h3{font:800 32px "Barlow Condensed";margin:0}.custom-close{background:none;border:0;color:white;font-size:25px}
+    .custom-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .custom-field{display:flex;flex-direction:column;gap:7px}.custom-field.full{grid-column:1/-1}
+    .custom-field label{font-size:9px;letter-spacing:1.5px;font-weight:800;color:#aaa}
+    .custom-field input,.custom-field textarea{width:100%;background:#1d1d1d;border:1px solid #444;color:white;padding:11px;font:12px "DM Sans";outline:none}
+    .custom-field input:focus,.custom-field textarea:focus{border-color:var(--orange)}
+    .custom-field input[type=color]{height:42px;padding:4px}
+    .custom-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .custom-actions button{flex:1;min-width:130px}
+    .custom-help{font-size:10px;color:#999;line-height:1.7;margin:14px 0 0}
+    @media(max-width:650px){.custom-grid{grid-template-columns:1fr}.custom-field.full{grid-column:auto}.custom-panel{padding:18px}.header-actions{gap:9px}.header-actions .cart-trigger{font-size:9px}}
+
+    @media(max-width:900px){.product-grid{grid-template-columns:repeat(2,1fr)}nav{gap:16px}.hero{min-height:560px}}
+    @media(max-width:650px){header{height:66px;padding:0 5vw}.menu-trigger{display:block}nav{display:none;position:absolute;top:66px;left:0;right:0;background:#090909;padding:25px 5vw 30px;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start}nav.open{display:flex}nav a{font-size:12px}.logo{font-size:26px}.hero{min-height:590px}.hero-content{padding:70px 7vw}.hero-image{object-position:60% center}.section{padding:65px 5vw}.section-head{display:block}.section-note{margin-top:15px}.product-grid{gap:22px 10px}.product-name{font-size:11px}.editorial{grid-template-columns:1fr}.editorial-image{min-height:320px;max-height:420px}.editorial-copy{padding:45px 7vw}.story{padding:65px 7vw}.newsletter{padding:60px 5vw}footer{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+  <div class="announcement" id="announcementBar">FREE SHIPPING PROMO — DISCOVER THE LATEST DROP</div>
+  <header>
+    <a class="logo" id="siteLogo" href="#home" aria-label="KAKS COLLECTION home">KAKS<span>.</span><br>COLLECTION</a>
+    <nav id="mainNav">
+      <a href="#home">HOME</a><a href="#shop">SHOP</a><a href="#collection">COLLECTION</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-trigger" id="openCustomizer">CUSTOMIZE</button>
+      <button class="cart-trigger" id="openCart">BAG <span class="cart-count" id="cartCount">0</span></button>
+      <button class="menu-trigger" id="menuToggle" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <img class="hero-image" src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=2000&q=85" alt="Streetwear fashion editorial">
+      <video class="hero-image" id="heroVideo" muted loop playsinline style="display:none"></video>
+      <div class="hero-content">
+        <div class="eyebrow">Independent streetwear label</div>
+        <h1 id="heroHeadline">Built from<br>the <span>East.</span></h1>
+        <p id="heroTagline">Made to be recognized. More than clothing. A statement of identity, culture, and the courage to be recognized.</p>
+        <a class="button" href="#shop">Shop the collection&nbsp; ↗</a>
+      </div>
+    </section>
+
+    <section class="section" id="shop">
+      <div class="section-head">
+        <div><div class="section-kicker">Selected pieces / 001</div><h2>Shop the drop.</h2></div>
+        <p class="section-note">Everyday essentials. Distinctive details. Made to move with your own rhythm.</p>
+      </div>
+      <div class="filters" id="filters">
+        <button class="filter active" data-category="all">ALL</button>
+        <button class="filter" data-category="tops">TOPS</button>
+        <button class="filter" data-category="outerwear">OUTERWEAR</button>
+        <button class="filter" data-category="accessories">ACCESSORIES</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="section" id="collection" style="padding-top:10px">
+      <div class="editorial">
+        <img class="editorial-image" src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85" alt="Streetwear collection editorial">
+        <div class="editorial-copy">
+          <div class="section-kicker">The latest collection</div>
+          <h2>Wear your<br>origin.</h2>
+          <p>Rooted in the East. Designed for everywhere. KAKS COLLECTION brings a bold perspective to modern streetwear through clean silhouettes and confident expression.</p>
+          <a class="button button-outline" href="#shop">Explore pieces&nbsp; ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="about">
+      <div class="section-kicker">Our identity / KAKS COLLECTION</div>
+      <h2>More than clothing.<br>A statement of identity.</h2>
+      <p>Born from the East, built through shadows, doubts, and determination. We represent culture, individuality, and the courage to be recognized — wherever the journey takes us.</p>
+    </section>
+
+    <section class="newsletter" id="contact">
+      <div class="section-kicker">Stay in the loop</div>
+      <h2>Get the next drop.</h2>
+      <p>Join the KAKS community for collection updates and exclusive announcements.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Your email address" aria-label="Your email address" required>
+        <button class="button" type="submit">JOIN</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#home">KAKS<span>.</span> COLLECTION</a>
+    <div>© <span id="year"></span> KAKS COLLECTION. ALL RIGHTS RESERVED.</div>
+    <div>BUILT FROM THE EAST.</div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-panel" id="cartPanel" aria-label="Shopping cart">
+    <div class="cart-head"><h3>YOUR BAG</h3><button class="close-cart" id="closeCart" aria-label="Close cart">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-bottom">
+      <div class="total-row"><span>SUBTOTAL</span><span id="cartTotal">Rp0</span></div>
+      <button class="button" id="checkoutButton">ORDER VIA WHATSAPP ↗</button>
+      <p style="font-size:9px;color:#888;line-height:1.6;margin:12px 0 0">Shipping fees and final payment details will be confirmed by our team.</p>
+    </div>
+  </aside>
+  <div class="custom-overlay" id="customOverlay"></div>
+  <section class="custom-panel" id="customPanel" aria-label="Website customizer">
+    <div class="custom-head"><h3>WEBSITE CUSTOMIZER</h3><button class="custom-close" id="closeCustomizer" aria-label="Close customizer">×</button></div>
+    <div class="custom-grid">
+      <div class="custom-field"><label for="editBrand">BRAND NAME</label><input id="editBrand" maxlength="32" value="KAKS COLLECTION"></div>
+      <div class="custom-field"><label for="editAccent">ACCENT COLOR</label><input id="editAccent" type="color" value="#ff6a00"></div>
+      <div class="custom-field"><label for="editHeadline">HERO HEADLINE</label><input id="editHeadline" value="Built from the East."></div>
+      <div class="custom-field"><label for="editTagline">HERO SUBHEADLINE</label><input id="editTagline" value="Made to be recognized."></div>
+      <div class="custom-field full"><label for="heroPhotoUpload">UPLOAD HERO PHOTO FROM DEVICE</label><input id="heroPhotoUpload" type="file" accept="image/*"></div>
+      <div class="custom-field full"><label for="heroVideoUpload">UPLOAD HERO VIDEO FROM DEVICE</label><input id="heroVideoUpload" type="file" accept="video/*"></div>
+      <div class="custom-field"><label for="editWhatsApp">WHATSAPP BUSINESS NUMBER</label><input id="editWhatsApp" inputmode="numeric" placeholder="6281234567890"></div>
+      <div class="custom-field"><label for="editAnnouncement">ANNOUNCEMENT BAR</label><input id="editAnnouncement" value="FREE SHIPPING PROMO — DISCOVER THE LATEST DROP"></div>
+    </div>
+    <div style="border-top:1px solid #333;margin-top:20px;padding-top:16px">
+      <div class="section-kicker">Product manager</div>
+      <h3 style="font:800 25px 'Barlow Condensed';margin:7px 0 14px">UPLOAD PRODUCT PHOTO / VIDEO</h3>
+      <div class="custom-grid">
+        <div class="custom-field"><label for="newProductName">PRODUCT NAME</label><input id="newProductName" placeholder="KAKS Graphic Tee"></div>
+        <div class="custom-field"><label for="newProductPrice">PRICE (RUPIAH)</label><input id="newProductPrice" type="number" min="1" placeholder="199000"></div>
+        <div class="custom-field"><label for="newProductCategory">CATEGORY</label><select id="newProductCategory" style="background:#1d1d1d;border:1px solid #444;color:white;padding:11px"><option value="tops">Tops</option><option value="outerwear">Outerwear</option><option value="accessories">Accessories</option></select></div>
+        <div class="custom-field"><label for="newProductMedia">CHOOSE PRODUCT PHOTO</label><input id="newProductMedia" type="file" accept="image/*"><small class="custom-help">Pilih foto langsung dari galeri HP.</small></div>
+        <div class="custom-field full" id="productPhotoPreviewWrap" style="display:none"><label>PHOTO PREVIEW</label><img id="productPhotoPreview" alt="Preview foto produk" style="width:100%;max-height:220px;object-fit:contain;background:#222;border:1px solid #444"></div>
+      </div>
+      <div class="custom-actions"><button class="button button-outline" id="addUploadedProduct" type="button">ADD PRODUCT TO CATALOG +</button></div>
+      <div id="customProductList"></div>
+      <p class="custom-help">Pilih file langsung dari galeri HP atau komputer. Tidak perlu URL. File disimpan di penyimpanan browser perangkat ini.</p>
+    </div>
+    <div class="custom-actions">
+      <button class="button" id="saveCustomization">SAVE CHANGES</button>
+      <button class="button button-outline" id="resetCustomization">RESET DEFAULT</button>
+    </div>
+    <p class="custom-help">Foto produk disimpan di browser/perangkat ini. Untuk ditampilkan ke semua pengunjung website publik, diperlukan penyimpanan cloud dan backend.</p>
+  </section>
+  <div class="toast" id="toast">Added to your bag</div>
+
+  <script>
+    // Ganti nomor ini dengan nomor WhatsApp bisnis KAKS COLLECTION.
+    // Gunakan format kode negara tanpa tanda +, contoh Indonesia: 6281234567890.
+    const DEFAULT_CUSTOM = {
+      brand: "KAKS COLLECTION",
+      accent: "#ff6a00",
+      headline: "Built from the East.",
+      tagline: "Made to be recognized. More than clothing. A statement of identity, culture, and the courage to be recognized.",
+      heroImage: "https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=2000&q=85",
+      whatsapp: "",
+      announcement: "FREE SHIPPING PROMO — DISCOVER THE LATEST DROP",
+      heroMediaKey: "", heroMediaType: ""
+    };
+    let siteCustom = {...DEFAULT_CUSTOM, ...(JSON.parse(localStorage.getItem("kaksSiteCustom") || "{}"))};
+    let WHATSAPP_NUMBER = siteCustom.whatsapp;
+
+    const MEDIA_DB_NAME="kaksCollectionMedia";
+    function openMediaDB(){return new Promise((resolve,reject)=>{if(!window.indexedDB){reject(new Error("IndexedDB tidak didukung"));return;}const r=indexedDB.open(MEDIA_DB_NAME,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains("media"))r.result.createObjectStore("media");};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error||new Error("Database tidak dapat dibuka"));r.onblocked=()=>reject(new Error("Database sedang terkunci"));});}
+    function fileAsDataURL(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(reader.error);reader.readAsDataURL(file);});}
+    async function makeSmallPhoto(file){
+      if(!file.type.startsWith("image/") || file.type.includes("gif"))return file;
+      try{const data=await fileAsDataURL(file);const img=await new Promise((resolve,reject)=>{const el=new Image();el.onload=()=>resolve(el);el.onerror=reject;el.src=data;});const scale=Math.min(1,1400/Math.max(img.width,img.height));const canvas=document.createElement("canvas");canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);return await new Promise(resolve=>canvas.toBlob(blob=>resolve(blob||file),"image/jpeg",.82));}catch(e){return file;}
+    }
+    async function storeMedia(key,file){
+      const optimized=await makeSmallPhoto(file);
+      try{const db=await openMediaDB();await new Promise((resolve,reject)=>{const tx=db.transaction("media","readwrite");tx.objectStore("media").put(optimized,key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error("Penyimpanan dibatalkan"));});db.close();}
+      catch(err){if(!optimized.type.startsWith("image/"))throw new Error("Browser ini tidak mendukung penyimpanan video lokal. Coba buka file lewat Chrome.");const data=await fileAsDataURL(optimized);try{localStorage.setItem("kaksMediaFallback_"+key,data);}catch(e){throw new Error("Penyimpanan browser penuh. Coba foto yang lebih kecil atau buka website lewat Chrome.");}}
+      return optimized;
+    }
+    async function fetchMedia(key){try{const db=await openMediaDB();const blob=await new Promise((resolve,reject)=>{const r=db.transaction("media","readonly").objectStore("media").get(key);r.onsuccess=()=>resolve(r.result||null);r.onerror=()=>reject(r.error);});db.close();if(blob)return blob;}catch(e){}const data=localStorage.getItem("kaksMediaFallback_"+key);if(!data)return null;const response=await fetch(data);return await response.blob();}
+    async function eraseMedia(key){if(!key)return;localStorage.removeItem("kaksMediaFallback_"+key);try{const db=await openMediaDB();await new Promise((resolve,reject)=>{const tx=db.transaction("media","readwrite");tx.objectStore("media").delete(key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});db.close();}catch(e){}}
+    const mediaUrls=new Map();
+    async function mediaUrl(key){if(mediaUrls.has(key))return mediaUrls.get(key);const blob=await fetchMedia(key);if(!blob)return null;const url=URL.createObjectURL(blob);mediaUrls.set(key,url);return url;}
+
+    let products = [
+      {id:1,name:"KAKS Signature Tee",price:189000,category:"tops",tag:"BEST SELLER",image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85"},
+      {id:2,name:"East Side Oversized",price:229000,category:"tops",tag:"NEW DROP",image:"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=85"},
+      {id:3,name:"Urban Utility Jacket",price:459000,category:"outerwear",tag:"LIMITED",image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85"},
+      {id:4,name:"KAKS Everyday Cap",price:149000,category:"accessories",tag:"ESSENTIAL",image:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=85"},
+      {id:5,name:"Origin Graphic Tee",price:199000,category:"tops",tag:"NEW DROP",image:"https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=800&q=85"},
+      {id:6,name:"Street Form Hoodie",price:389000,category:"outerwear",tag:"CORE",image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=85"},
+      {id:7,name:"KAKS Crossbody Bag",price:179000,category:"accessories",tag:"UTILITY",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=85"},
+      {id:8,name:"East Bound Long Sleeve",price:249000,category:"tops",tag:"CORE",image:"https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=85"}
+    ];
+
+    let cart = JSON.parse(localStorage.getItem("kaksCart") || "[]");
+    const rupiah = n => new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(n);
+
+
+
+    async function uploadHeroFile(file){
+      if(!file || (!file.type.startsWith("image/") && !file.type.startsWith("video/"))){showToast("Pilih file foto atau video yang valid");return;}
+      const key="hero-"+Date.now();
+      try{await storeMedia(key,file);if(siteCustom.heroMediaKey)await eraseMedia(siteCustom.heroMediaKey);siteCustom.heroMediaKey=key;siteCustom.heroMediaType=file.type.startsWith("video/")?"video":"image";siteCustom.heroImage="";localStorage.setItem("kaksSiteCustom",JSON.stringify(siteCustom));applyCustomization();showToast("Hero media uploaded");}
+      catch(e){showToast("Gagal menyimpan file di browser");}
+    }
+    async function addUploadedProduct(){
+      const name=document.getElementById("newProductName").value.trim(), price=Number(document.getElementById("newProductPrice").value), category=document.getElementById("newProductCategory").value, input=document.getElementById("newProductMedia"), file=input.files&&input.files[0];
+      if(!name || !Number.isFinite(price) || price<=0 || !file){showToast("Isi nama, harga, lalu pilih foto produk");return;}
+      if(!file.type.startsWith("image/")){showToast("Pilih file foto JPG, PNG, atau WEBP");return;}
+      const id=Date.now(), key="product-"+id;
+      const btn=document.getElementById("addUploadedProduct");btn.disabled=true;btn.textContent="SAVING PHOTO...";
+      try{const savedFile=await storeMedia(key,file);const url=URL.createObjectURL(savedFile);mediaUrls.set(key,url);products.push({id,name,price,category,tag:"NEW",image:url,mediaKey:key,mediaType:"image"});localStorage.setItem("kaksProducts",JSON.stringify(products.filter(x=>x.mediaKey).map(({image,...x})=>x)));document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));document.querySelector(".filter[data-category=\"all\"]")?.classList.add("active");renderProducts("all");renderAdminProducts();document.getElementById("newProductName").value="";document.getElementById("newProductPrice").value="";input.value="";document.getElementById("productPhotoPreviewWrap").style.display="none";document.getElementById("productPhotoPreview").src="";showToast("Foto produk berhasil ditambahkan!");}
+      catch(e){console.error("Upload product photo failed:",e);showToast(e.message||"Gagal menyimpan foto. Coba Chrome.");}
+      finally{btn.disabled=false;btn.textContent="ADD PRODUCT TO CATALOG +";}
+    }
+    function renderAdminProducts(){const el=document.getElementById("customProductList");if(!el)return;const items=products.filter(x=>x.mediaKey);el.innerHTML=items.length?items.map(x=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid #333;font-size:11px"><span>${x.name} — ${rupiah(x.price)}</span><button class="remove" onclick="removeUploadedProduct(${x.id})">DELETE</button></div>`).join(""):'<p class="custom-help">Belum ada produk upload-an.</p>';}
+    async function removeUploadedProduct(id){const item=products.find(x=>x.id===id);if(!item)return;await eraseMedia(item.mediaKey);if(mediaUrls.has(item.mediaKey)){URL.revokeObjectURL(mediaUrls.get(item.mediaKey));mediaUrls.delete(item.mediaKey);}products=products.filter(x=>x.id!==id);localStorage.setItem("kaksProducts",JSON.stringify(products.filter(x=>x.mediaKey).map(({image,...x})=>x)));renderProducts(document.querySelector(".filter.active")?.dataset.category||"all");renderAdminProducts();showToast("Product deleted");}
+    async function loadUploadedProducts(){try{const saved=JSON.parse(localStorage.getItem("kaksProducts")||"[]");for(const item of saved){if(!products.some(p=>p.id===item.id)){const url=await mediaUrl(item.mediaKey);if(url)products.push({...item,image:url});}}renderProducts();renderAdminProducts();}catch(e){}}
+
+    function applyCustomization(){
+      document.documentElement.style.setProperty("--orange",siteCustom.accent || DEFAULT_CUSTOM.accent);
+      const words=(siteCustom.brand || DEFAULT_CUSTOM.brand).trim().split(/\s+/);
+      const first=words.shift() || "KAKS";
+      const rest=words.join(" ") || "COLLECTION";
+      document.getElementById("siteLogo").innerHTML=`${first}<span>.</span><br>${rest}`;
+      document.getElementById("siteLogo").setAttribute("aria-label",siteCustom.brand);
+      const headline=(siteCustom.headline || DEFAULT_CUSTOM.headline).trim();
+      const parts=headline.split(/\s+/);
+      const last=parts.pop() || "East.";
+      document.getElementById("heroHeadline").innerHTML=`${parts.join(" ")}<br><span>${last}</span>`;
+      document.getElementById("heroTagline").textContent=siteCustom.tagline || "";
+      document.getElementById("announcementBar").textContent=siteCustom.announcement || "";
+      const heroImg=document.querySelector(".hero-image"), heroVid=document.getElementById("heroVideo");
+      if(siteCustom.heroMediaKey){mediaUrl(siteCustom.heroMediaKey).then(url=>{if(!url)return;if(siteCustom.heroMediaType==="video"){heroImg.style.display="none";heroVid.style.display="block";heroVid.src=url;heroVid.play().catch(()=>{});}else{heroVid.pause();heroVid.style.display="none";heroImg.style.display="block";heroImg.src=url;}});}
+      else{heroVid.pause();heroVid.style.display="none";heroImg.style.display="block";if(siteCustom.heroImage)heroImg.src=siteCustom.heroImage;}
+      WHATSAPP_NUMBER=siteCustom.whatsapp || "";
+      document.getElementById("editBrand").value=siteCustom.brand;
+      document.getElementById("editAccent").value=siteCustom.accent;
+      document.getElementById("editHeadline").value=siteCustom.headline;
+      document.getElementById("editTagline").value=siteCustom.tagline;
+      document.getElementById("editWhatsApp").value=siteCustom.whatsapp;
+      document.getElementById("editAnnouncement").value=siteCustom.announcement;
+    }
+    function openCustomizer(){
+      applyCustomization();
+      document.getElementById("customPanel").classList.add("open");
+      document.getElementById("customOverlay").classList.add("open");
+    }
+    function closeCustomizer(){
+      document.getElementById("customPanel").classList.remove("open");
+      document.getElementById("customOverlay").classList.remove("open");
+    }
+    function saveCustomization(){
+      siteCustom={
+        brand:document.getElementById("editBrand").value.trim() || DEFAULT_CUSTOM.brand,
+        accent:document.getElementById("editAccent").value,
+        headline:document.getElementById("editHeadline").value.trim() || DEFAULT_CUSTOM.headline,
+        tagline:document.getElementById("editTagline").value.trim(),
+        heroImage:siteCustom.heroImage || DEFAULT_CUSTOM.heroImage,
+        whatsapp:document.getElementById("editWhatsApp").value.replace(/\D/g,""),
+        announcement:document.getElementById("editAnnouncement").value.trim(),
+        heroMediaKey:siteCustom.heroMediaKey || "", heroMediaType:siteCustom.heroMediaType || ""
+      };
+      localStorage.setItem("kaksSiteCustom",JSON.stringify(siteCustom));
+      applyCustomization();showToast("Website customization saved");closeCustomizer();
+    }
+    function resetCustomization(){
+      siteCustom={...DEFAULT_CUSTOM};
+      localStorage.setItem("kaksSiteCustom",JSON.stringify(siteCustom));
+      applyCustomization();showToast("Default design restored");
+    }
+
+    function renderProducts(category="all"){
+      const list = category==="all" ? products : products.filter(p=>p.category===category);
+      document.getElementById("productGrid").innerHTML = list.map(p=>`
+        <article class="product-card">
+          <div class="product-image-wrap">
+            ${p.mediaType==="video" ? `<video class="product-image" src="${p.image}" muted loop playsinline controls preload="metadata"></video>` : `<img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy">`}
+            <span class="product-tag">${p.tag}</span>
+          </div>
+          <div class="product-info">
+            <div class="product-name">${p.name}</div>
+            <div class="product-meta"><span>${rupiah(p.price)}</span><span>KAKS / 001</span></div>
+            <button class="add-button" onclick="addToCart(${p.id})">ADD TO BAG&nbsp; +</button>
+          </div>
+        </article>`).join("");
+    }
+
+    function saveCart(){localStorage.setItem("kaksCart",JSON.stringify(cart));renderCart()}
+    function addToCart(id){
+      const found=cart.find(item=>item.id===id);
+      if(found) found.qty++; else cart.push({id,qty:1});
+      saveCart();showToast("Added to your bag");
+    }
+    function changeQty(id,delta){
+      const item=cart.find(x=>x.id===id);if(!item)return;
+      item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x.id!==id);
+      saveCart();
+    }
+    function removeItem(id){cart=cart.filter(x=>x.id!==id);saveCart()}
+    function renderCart(){
+      const count=cart.reduce((sum,x)=>sum+x.qty,0);
+      const total=cart.reduce((sum,x)=>sum+products.find(p=>p.id===x.id).price*x.qty,0);
+      document.getElementById("cartCount").textContent=count;
+      document.getElementById("cartTotal").textContent=rupiah(total);
+      const target=document.getElementById("cartItems");
+      if(!cart.length){target.innerHTML='<div class="empty">Your bag is currently empty.</div>';return}
+      target.innerHTML=cart.map(item=>{
+        const p=products.find(x=>x.id===item.id);
+        return `<div class="cart-item">
+          <img src="${p.image}" alt="${p.name}">
+          <div><strong>${p.name}</strong><small>${rupiah(p.price)}</small>
+            <div class="qty"><button onclick="changeQty(${p.id},-1)">−</button><span>${item.qty}</span><button onclick="changeQty(${p.id},1)">+</button></div>
+          </div>
+          <button class="remove" onclick="removeItem(${p.id})" aria-label="Remove ${p.name}">REMOVE</button>
+        </div>`;
+      }).join("");
+    }
+    function openCart(){document.getElementById("cartPanel").classList.add("open");document.getElementById("cartOverlay").classList.add("open")}
+    function closeCart(){document.getElementById("cartPanel").classList.remove("open");document.getElementById("cartOverlay").classList.remove("open")}
+    function showToast(message){const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1800)}
+
+    document.getElementById("filters").addEventListener("click",e=>{
+      const btn=e.target.closest("[data-category]");if(!btn)return;
+      document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));
+      btn.classList.add("active");renderProducts(btn.dataset.category);
+    });
+    document.getElementById("openCart").addEventListener("click",openCart);
+    document.getElementById("openCustomizer").addEventListener("click",openCustomizer);
+    document.getElementById("closeCustomizer").addEventListener("click",closeCustomizer);
+    document.getElementById("customOverlay").addEventListener("click",closeCustomizer);
+    document.getElementById("saveCustomization").addEventListener("click",saveCustomization);
+    document.getElementById("addUploadedProduct").addEventListener("click",addUploadedProduct);
+    document.getElementById("newProductMedia").addEventListener("change",e=>{const f=e.target.files&&e.target.files[0],wrap=document.getElementById("productPhotoPreviewWrap"),img=document.getElementById("productPhotoPreview");if(!f){wrap.style.display="none";img.src="";return;}if(!f.type.startsWith("image/")){showToast("File yang dipilih harus berupa foto");e.target.value="";wrap.style.display="none";return;}img.src=URL.createObjectURL(f);wrap.style.display="flex";});
+    document.getElementById("heroPhotoUpload").addEventListener("change",e=>uploadHeroFile(e.target.files[0]));
+    document.getElementById("heroVideoUpload").addEventListener("change",e=>uploadHeroFile(e.target.files[0]));
+    document.getElementById("resetCustomization").addEventListener("click",resetCustomization);
+    document.getElementById("closeCart").addEventListener("click",closeCart);
+    document.getElementById("cartOverlay").addEventListener("click",closeCart);
+    document.getElementById("menuToggle").addEventListener("click",()=>document.getElementById("mainNav").classList.toggle("open"));
+    document.querySelectorAll("#mainNav a").forEach(a=>a.addEventListener("click",()=>document.getElementById("mainNav").classList.remove("open")));
+    document.getElementById("checkoutButton").addEventListener("click",()=>{
+      if(!cart.length){showToast("Your bag is empty");return}
+      if(!WHATSAPP_NUMBER){showToast("Add your WhatsApp number in CUSTOMIZE first");return}
+      const lines=cart.map(item=>{const p=products.find(x=>x.id===item.id);return `• ${p.name} x${item.qty} — ${rupiah(p.price*item.qty)}`});
+      const total=cart.reduce((sum,x)=>sum+products.find(p=>p.id===x.id).price*x.qty,0);
+      const message=`Halo KAKS COLLECTION, saya ingin memesan:\n\n${lines.join("\n")}\n\nSubtotal: ${rupiah(total)}\n\nMohon info ketersediaan ukuran dan ongkir.`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,"_blank");
+    });
+    document.getElementById("newsletterForm").addEventListener("submit",e=>{
+      e.preventDefault();showToast("Thanks for joining KAKS");e.target.reset();
+    });
+    document.getElementById("year").textContent=new Date().getFullYear();
+    applyCustomization();renderProducts();renderCart();loadUploadedProducts();
+  </script>
+</body>
+</html>
